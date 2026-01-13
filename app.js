@@ -12,4 +12,21 @@
 // }, 2000);
 
 // console.log(__dirname);
-console.log(__filename);
+// console.log(__filename);
+
+// Funtions
+// function apple() {
+//   console.log("Hello World!");
+// }
+
+// apple();
+
+// function callBackFunc(func) {
+//   func();
+// }
+
+// let blue = function () {
+//   console.log("Hello!");
+// };
+
+// callBackFunc(blue);
