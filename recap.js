@@ -30,3 +30,11 @@
 // };
 
 // callBackFunc(blue);
+
+// Modules - In Node.js, each file is treated as a separate module
+const helper = require("./helper");
+
+// console.log(helper("John"));
+console.log(helper.user("John"));
+console.log(helper.id("123"));
+console.log(helper.email("john@mail.co"));
