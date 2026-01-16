@@ -71,9 +71,11 @@ const express = require("express");
 
 const app = express();
 
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
   // res.send("Home Page!");
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.get("/about", (req, res) => {
@@ -82,7 +84,13 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/profile/:name", (req, res) => {
-  res.send("Profile name is " + req.params.name);
+  // res.send("Profile name is " + req.params.name);
+  const data = {
+    age: 25,
+    job: "developer",
+    friends: ["Bob", "Alice", "Charlie"],
+  };
+  res.render("profile", { person: req.params.name, data });
 });
 
 app.listen(3000);
