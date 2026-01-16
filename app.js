@@ -47,21 +47,42 @@
 
 // server.listen(3000, "127.0.0.1");
 
-// Routing
-const http = require("http");
-const fs = require("fs");
+// // Routing
+// const http = require("http");
+// const fs = require("fs");
 
-const server = http.createServer((req, res) => {
-  if (req.url === "/home" || req.url === "/") {
-    res.writeHead(200, { "content-type": "text/html" });
-    fs.createReadStream(__dirname + "/index.html").pipe(res);
-  } else if (req.url === "/about") {
-    res.writeHead(200, { "content-type": "text/html" });
-    fs.createReadStream(__dirname + "/about.html").pipe(res);
-  } else {
-    res.writeHead(200, { "content-type": "text/html" });
-    fs.createReadStream(__dirname + "/404.html").pipe(res);
-  }
+// const server = http.createServer((req, res) => {
+//   if (req.url === "/home" || req.url === "/") {
+//     res.writeHead(200, { "content-type": "text/html" });
+//     fs.createReadStream(__dirname + "/index.html").pipe(res);
+//   } else if (req.url === "/about") {
+//     res.writeHead(200, { "content-type": "text/html" });
+//     fs.createReadStream(__dirname + "/about.html").pipe(res);
+//   } else {
+//     res.writeHead(200, { "content-type": "text/html" });
+//     fs.createReadStream(__dirname + "/404.html").pipe(res);
+//   }
+// });
+
+// server.listen(3000, "127.0.0.1");
+
+// Express
+const express = require("express");
+
+const app = express();
+
+app.get("/", (req, res) => {
+  // res.send("Home Page!");
+  res.sendFile(__dirname + '/index.html');
 });
 
-server.listen(3000, "127.0.0.1");
+app.get("/about", (req, res) => {
+  // res.send("About Page!");
+  res.sendFile(__dirname + "/about.html");
+});
+
+app.get("/profile/:name", (req, res) => {
+  res.send("Profile name is " + req.params.name);
+});
+
+app.listen(3000);
