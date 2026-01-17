@@ -75,12 +75,14 @@ app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   // res.send("Home Page!");
-  res.sendFile(__dirname + "/index.html");
+  // res.sendFile(__dirname + "/index.html");
+  res.render("partials/index");
 });
 
 app.get("/about", (req, res) => {
   // res.send("About Page!");
-  res.sendFile(__dirname + "/about.html");
+  // res.sendFile(__dirname + "/about.html");
+  res.render("partials/about");
 });
 
 app.get("/profile/:name", (req, res) => {
