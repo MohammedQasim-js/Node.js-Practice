@@ -73,6 +73,8 @@ const app = express();
 
 app.set("view engine", "ejs");
 
+app.use("/assets", express.static("assets"));
+
 app.get("/", (req, res) => {
   // res.send("Home Page!");
   // res.sendFile(__dirname + "/index.html");
@@ -82,7 +84,8 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   // res.send("About Page!");
   // res.sendFile(__dirname + "/about.html");
-  res.render("partials/about");
+  console.log(req.query);
+  res.render("partials/about", { qs: req.query });
 });
 
 app.get("/profile/:name", (req, res) => {
