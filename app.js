@@ -68,8 +68,10 @@
 
 // Express
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.set("view engine", "ejs");
 
@@ -84,8 +86,13 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   // res.send("About Page!");
   // res.sendFile(__dirname + "/about.html");
-  console.log(req.query);
-  res.render("partials/about", { qs: req.query });
+  // console.log(req.query);
+  res.render("about", { qs: req.query });
+});
+
+app.post("/about", urlencodedParser, (req, res) => {
+  // console.log(req.body);
+  res.render("about-success", { data: req.body });
 });
 
 app.get("/profile/:name", (req, res) => {
